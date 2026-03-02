@@ -18,7 +18,7 @@ class FavoriteScreen extends StatelessWidget {
  
     // 3 - Watch the globbal player state
     PlayerState playerState = context.read<PlayerState>();
-
+  
     return Container(
       
       child: Column(
