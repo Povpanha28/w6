@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:w6/ui/states/settings_state.dart';
 
 import '../../../data/repositories/songs/song_repository.dart';
 import '../../../model/songs/song.dart';
@@ -9,26 +10,24 @@ import '../../theme/theme.dart';
 class FavoriteScreen extends StatelessWidget {
   const FavoriteScreen({super.key});
 
- 
   @override
   Widget build(BuildContext context) {
     // 1- Read the globbal song repository
     SongRepository songRepository = context.read<SongRepository>();
     List<Song> songs = songRepository.fetchSongs();
- 
+
+    final AppSettingsState appSettingsState = context.read<AppSettingsState>();
+
     // 3 - Watch the globbal player state
     PlayerState playerState = context.read<PlayerState>();
-  
+
     return Container(
-      
+      color: appSettingsState.theme.backgroundColor,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SizedBox(height: 16),
-          Text(
-            "Favorite",
-            style: AppTextStyles.heading,
-          ),
+          Text("Favorite", style: AppTextStyles.heading),
 
           SizedBox(height: 50),
 
@@ -48,15 +47,10 @@ class FavoriteScreen extends StatelessWidget {
 }
 
 class SongTile extends StatelessWidget {
-  const SongTile({
-    super.key,
-    required this.song,
-    required this.isPlaying,
-  });
+  const SongTile({super.key, required this.song, required this.isPlaying});
 
   final Song song;
   final bool isPlaying;
-
 
   @override
   Widget build(BuildContext context) {

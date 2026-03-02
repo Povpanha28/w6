@@ -21,7 +21,8 @@ List<SingleChildWidget> get devProviders {
 
     // 3 - Inject the  app setting state
     ChangeNotifierProvider<AppSettingsState>(
-      create: (_) => AppSettingsState(reposityMock: appSettingsRepositoryMock),
+      create: (_) =>
+          AppSettingsState(reposityMock: appSettingsRepositoryMock)..init(),// Auto load settings
     ),
   ];
 }

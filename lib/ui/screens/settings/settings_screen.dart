@@ -30,7 +30,7 @@ class SettingsScreen extends StatelessWidget {
 
           SizedBox(height: 10),
 
-          Row(
+           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: ThemeColor.values
                 .map(
@@ -39,7 +39,6 @@ class SettingsScreen extends StatelessWidget {
                     isSelected: appSettingsState.theme == theme,
                     onTap: (value) {
                       appSettingsState.changeTheme(value);
-                      print("Tap");
                     },
                   ),
                 )

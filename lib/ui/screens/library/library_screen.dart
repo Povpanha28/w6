@@ -16,10 +16,13 @@ class LibraryScreen extends StatelessWidget {
     SongRepository songRepository = context.read<SongRepository>();
     List<Song> songs = songRepository.fetchSongs();
 
+    final AppSettingsState appSettingsState = context.read<AppSettingsState>();
+
     // 3 - Watch the global player state
     PlayerState playerState = context.watch<PlayerState>();
 
     return Container(
+      color: appSettingsState.theme.backgroundColor,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [

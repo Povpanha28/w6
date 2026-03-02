@@ -5,17 +5,14 @@ import '../../model/settings/app_settings.dart';
 
 class AppSettingsState extends ChangeNotifier {
   AppSettings? _appSettings;
-  AppSettingsRepositoryMock _repositoryMock;
-
-  // AppSettingsRepositoryMock settingsRepositoryMock =
-  //     AppSettingsRepositoryMock();
+  AppSettingsRepositoryMock repositoryMock;
 
   AppSettingsState({required AppSettingsRepositoryMock reposityMock})
-    : _repositoryMock = reposityMock;
+    : repositoryMock = reposityMock;
 
   Future<void> init() async {
     // Might be used to load data from repository
-    _appSettings = await _repositoryMock.load();
+    _appSettings = await repositoryMock.load();
     notifyListeners();
   }
 
@@ -25,7 +22,7 @@ class AppSettingsState extends ChangeNotifier {
     if (_appSettings == null) return;
     _appSettings = _appSettings!.copyWith(themeColor: themeColor);
 
-    await _repositoryMock.save(_appSettings!);
+    await repositoryMock.save(_appSettings!);
     notifyListeners();
   }
 }
